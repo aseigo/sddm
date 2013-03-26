@@ -101,16 +101,16 @@ int main(int argc, char **argv) {
     Configuration configuration(CONFIG_FILE);
 
     // get socket name
-    QString socket = parameter(app.arguments(), "--socket", "");
+    const QString socket = parameter(app.arguments(), "--socket", "");
 
     // get theme path
-    QString theme = parameter(app.arguments(), "--theme", "");
+    const QString theme = parameter(app.arguments(), "--theme", configuration.currentThemePath());
 
     // read theme metadata
-    ThemeMetadata metadata(QString("%1/metadata.desktop").arg(theme));
+    const ThemeMetadata metadata(QString("%1/metadata.desktop").arg(theme));
 
     // get theme config file
-    QString configFile = QString("%1/%2").arg(theme).arg(metadata.configFile());
+    const QString configFile = QString("%1/%2").arg(theme).arg(metadata.configFile());
 
     // read theme config
     ThemeConfig config(configFile);
